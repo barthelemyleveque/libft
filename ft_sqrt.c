@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 15:36:23 by bleveque          #+#    #+#             */
-/*   Updated: 2018/11/11 15:37:00 by bleveque         ###   ########.fr       */
+/*   Created: 2018/11/17 17:39:27 by bleveque          #+#    #+#             */
+/*   Updated: 2018/11/17 18:20:15 by bleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+int		ft_sqrt(int nb)
 {
-	ft_putstr_fd(s, 1);
+	int	i;
+
+	if (nb <= 0)
+		return (0);
+	if (nb == 1)
+		return (1);
+	i = (nb / 2) > 46340 ? 46340 : (nb / 2);
+	while (i >= 1)
+	{
+		if (i * i == nb)
+			return (i);
+		i--;
+	}
+	return (0);
 }

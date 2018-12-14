@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 15:36:23 by bleveque          #+#    #+#             */
-/*   Updated: 2018/11/11 15:37:00 by bleveque         ###   ########.fr       */
+/*   Created: 2018/11/09 15:48:39 by bleveque          #+#    #+#             */
+/*   Updated: 2018/11/22 16:43:48 by bleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	ft_putstr_fd(s, 1);
+	char	*copy;
+	int		i;
+	int		len;
+
+	if (!(s) || !(f))
+		return (NULL);
+	i = 0;
+	len = ft_strlen(s);
+	if (!(copy = (char*)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	while (i < len)
+	{
+		copy[i] = f(i, s[i]);
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }
